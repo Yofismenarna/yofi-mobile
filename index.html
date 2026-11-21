@@ -32,6 +32,32 @@
 </button>
 
 <p id="scanResult">Zatím nic nenaskenováno</p>
+  
+<div id="productDetails">
+  <h3>Informace o produktu</h3>
+
+  <p>Název: <strong id="productName">Zatím nenačteno</strong></p>
+  <p>Skladem: <strong id="productStock">—</strong></p>
+
+  <h3>Skladový pohyb</h3>
+
+  <label for="movementType">Typ pohybu:</label>
+  <select id="movementType">
+    <option value="prijem">Příjem zboží</option>
+    <option value="vydej">Výdej zboží</option>
+  </select>
+
+  <p>
+    <label for="movementQuantity">Počet kusů:</label>
+    <input type="number" id="movementQuantity"
+           min="1" value="1">
+  </p>
+
+  <button id="saveMovement" disabled>
+    Uložit skladový pohyb
+  </button>
+</div>
+
 <div id="reader" style="width:100%;max-width:400px;"></div>
 
 <script>
