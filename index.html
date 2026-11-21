@@ -23,6 +23,33 @@
   }
 </script>
  
+<button id="testCamera" onclick="testCamera()">
+  Otestovat fotoaparát
+</button>
+
+<p id="cameraStatus"></p>
+<video id="cameraPreview" autoplay playsinline muted
+       style="width:100%;max-width:400px;"></video>
+
+<script>
+async function testCamera() {
+  const status = document.getElementById('cameraStatus');
+  const video = document.getElementById('cameraPreview');
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' },
+      audio: false
+    });
+
+    video.srcObject = stream;
+    status.textContent = 'Fotoaparát funguje!';
+  } catch (error) {
+    status.textContent = 'Chyba fotoaparátu: ' + error.message;
+  }
+}
+</script>
+
 </body>
   
 </html>
