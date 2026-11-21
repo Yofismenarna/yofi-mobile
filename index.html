@@ -15,6 +15,15 @@
 <body>
   <h1>YOFI</h1>
   <p>Mobilní skladová aplikace</p>
+ 
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js');
+    });
+  }
+</script>
+ 
 </body>
 </html>
 
