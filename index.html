@@ -48,6 +48,7 @@
 </button>
 
 <script>
+
 function confirmEAN() {
   const ean = document.getElementById("productEAN").value.trim();
 
@@ -55,6 +56,26 @@ function confirmEAN() {
     alert("Nejprve zadejte nebo naskenujte EAN.");
     return;
   }
+
+  document.getElementById("scanResult").textContent =
+    "Zadaný EAN: " + ean;
+
+  document.getElementById("saveMovement").disabled = true;
+
+  if (ean === "8590000000001") {
+    document.getElementById("productName").textContent =
+      "Testovací víno (UKÁZKA)";
+
+    document.getElementById("productStock").textContent =
+      "10 ks (testovací údaj)";
+  } else {
+    document.getElementById("productName").textContent =
+      "Produkt zatím nelze načíst";
+
+    document.getElementById("productStock").textContent = "—";
+  }
+}
+
 
   document.getElementById("scanResult").textContent =
     "Zadaný EAN: " + ean;
