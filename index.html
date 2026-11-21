@@ -84,7 +84,7 @@
 <button onclick="startScanner()">
   Skenovat EAN
 </button>
-
+<div id="reader" style="width:100%;max-width:400px;"></div>
 <p id="scanResult">Zatím nic nenaskenováno</p>
   
 <div id="productDetails">
@@ -180,7 +180,7 @@ window.open(url + "?ean=" + encodeURIComponent(ean), "_blank");
   </button>
 </div>
 
-<div id="reader" style="width:100%;max-width:400px;"></div>
+
 
 <script>
 let scanner = null;
