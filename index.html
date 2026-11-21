@@ -43,6 +43,30 @@
        inputmode="numeric"
        placeholder="Naskenujte nebo zadejte EAN">
 
+<button type="button" onclick="confirmEAN()">
+  Potvrdit EAN
+</button>
+
+<script>
+function confirmEAN() {
+  const ean = document.getElementById("productEAN").value.trim();
+
+  if (!ean) {
+    alert("Nejprve zadejte nebo naskenujte EAN.");
+    return;
+  }
+
+  document.getElementById("scanResult").textContent =
+    "Zadaný EAN: " + ean;
+
+  document.getElementById("productName").textContent =
+    "Čeká na načtení produktu";
+
+  document.getElementById("productStock").textContent = "—";
+  document.getElementById("saveMovement").disabled = true;
+}
+</script>
+
 </p>
 
 
