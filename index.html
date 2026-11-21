@@ -124,6 +124,22 @@
 }
 
 
+
+.continue-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 18px;
+  background: #D4AF37;
+  color: #111111;
+  border: none;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
 </style>
 
 
@@ -162,10 +178,11 @@
        oninput="confirmEAN()">
 
 
-
-<button type="button" onclick="openStockWithEAN()">
-  Otevřít produkt ve skladu YOFI
+<button type="button" class="continue-button" onclick="openStockWithEAN()">
+  Pokračovat do skladu →
 </button>
+
+
 
 <script>
 
