@@ -94,7 +94,9 @@ function openStockWithEAN() {
 
   const url = "https://script.google.com/macros/s/AKfycbwcZlJNvov3Q9myldEbcY5gKATCZPIsnIeyDNxsHRJrmrahykWpXo_NsR-sthmYKXdWwg/exec";
 
-  window.location.href = url + "?ean=" + encodeURIComponent(ean);
+  
+window.open(url + "?ean=" + encodeURIComponent(ean), "_blank");
+
 }
 
 </script>
