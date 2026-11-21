@@ -53,6 +53,7 @@
 <script>
 
 function confirmEAN() {
+
   const ean = document.getElementById("productEAN").value.trim();
 
   if (!ean) {
@@ -77,6 +78,19 @@ function confirmEAN() {
 
     document.getElementById("productStock").textContent = "—";
   }
+}
+
+function openStockWithEAN() {
+  const ean = document.getElementById("productEAN").value.trim();
+
+  if (!ean) {
+    alert("Nejprve zadejte nebo naskenujte EAN.");
+    return;
+  }
+
+  const url = "https://script.google.com/macros/s/AKfycbwcZlJNvov3Q9myldEbcY5gKATCZPIsnIeyDNxsHRJrmrahykWpXo_NsR-sthmYKXdWwg/exec";
+
+  window.location.href = url + "?ean=" + encodeURIComponent(ean);
 }
 
 </script>
