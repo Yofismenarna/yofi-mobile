@@ -26,32 +26,53 @@
   }
 </script>
  
-<button id="testCamera" onclick="testCamera()">
-  Otestovat fotoaparát
+
+<button onclick="startScanner()">
+  Skenovat EAN
 </button>
 
-<p id="cameraStatus"></p>
-<video id="cameraPreview" autoplay playsinline muted
-       style="width:100%;max-width:400px;"></video>
+<p id="scanResult">Zatím nic nenaskenováno</p>
+<div id="reader" style="width:100%;max-width:400px;"></div>
 
 <script>
-async function testCamera() {
-  const status = document.getElementById('cameraStatus');
-  const video = document.getElementById('cameraPreview');
+let scanner = null;
+
+async function startScanner() {
+  const result = document.getElementById("scanResult");
+  result.textContent = "Spouštím fotoaparát...";
 
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: 'environment' },
-      audio: false
+    if (scanner) {
+      await scanner.stop();
+      scanner.clear();
+    }
+
+    scanner = new Html5Qrcode("reader", {
+      formatsToSupport: [
+        Html5QrcodeSupportedFormats.EAN_13,
+        Html5QrcodeSupportedFormats.EAN_8,
+        Html5QrcodeSupportedFormats.UPC_A,
+        Html5QrcodeSupportedFormats.CODE_128
+      ]
     });
 
-    video.srcObject = stream;
-    status.textContent = 'Fotoaparát funguje!';
+    await scanner.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: { width: 250, height: 150 } },
+      async (decodedText) => {
+        result.textContent = "Naskenovaný EAN: " + decodedText;
+        await scanner.stop();
+        scanner.clear();
+        scanner = null;
+      },
+      () => {}
+    );
   } catch (error) {
-    status.textContent = 'Chyba fotoaparátu: ' + error.message;
+    result.textContent = "Chyba: " + error.message;
   }
 }
 </script>
+
 
 </body>
   
