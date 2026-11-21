@@ -313,14 +313,16 @@ async function startScanner() {
 
     await scanner.start(
       { facingMode: "environment" },
-      { fps: 15, qrbox: { width: 180, height: 90 } },
+      {
+        fps: 15,
+        qrbox: { width: 180, height: 90 }
+      },
       async (decodedText) => {
         result.textContent = "Naskenovaný EAN: " + decodedText;
-        
-document.getElementById("productEAN").value = decodedText;
 
+        document.getElementById("productEAN").value = decodedText;
 
-confirmEAN();
+        confirmEAN();
 
         await scanner.stop();
         scanner.clear();
@@ -328,6 +330,32 @@ confirmEAN();
       },
       () => {}
     );
+
+    // Automatický zoom pro malé čárové kódy
+    try {
+      const capabilities = scanner.getRunningTrackCapabilities();
+
+      if (capabilities.zoom) {
+        const minZoom = capabilities.zoom.min || 1;
+        const maxZoom = capabilities.zoom.max || 1;
+
+        const desiredZoom = Math.min(2.5, maxZoom);
+
+        if (desiredZoom >= minZoom) {
+          await scanner.applyVideoConstraints({
+            advanced: [{ zoom: desiredZoom }]
+          });
+
+          result.textContent =
+            "Fotoaparát spuštěn – přiblížení " +
+            desiredZoom.toFixed(1) +
+            "×";
+        }
+      }
+    } catch (zoomError) {
+      console.log("Zoom není dostupný:", zoomError);
+    }
+
   } catch (error) {
     result.textContent = "Chyba: " + error.message;
   }
