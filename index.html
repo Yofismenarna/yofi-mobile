@@ -313,7 +313,7 @@ async function startScanner() {
 
     await scanner.start(
       { facingMode: "environment" },
-      { fps: 10, qrbox: { width: 250, height: 150 } },
+      { fps: 15, qrbox: { width: 180, height: 90 } },
       async (decodedText) => {
         result.textContent = "Naskenovaný EAN: " + decodedText;
         
