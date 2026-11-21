@@ -211,7 +211,8 @@ function openStockWithEAN() {
   const url = "https://script.google.com/macros/s/AKfycbwcZlJNvov3Q9myldEbcY5gKATCZPIsnIeyDNxsHRJrmrahykWpXo_NsR-sthmYKXdWwg/exec";
 
   
-window.open(url + "?ean=" + encodeURIComponent(ean), "_blank");
+window.open(url + "?new=1&ean=" + encodeURIComponent(ean), "_blank");
+
 
 }
 
