@@ -138,6 +138,8 @@ document.getElementById("productName").textContent = "Čeká na načtení produk
 document.getElementById("productStock").textContent = "—";
 document.getElementById("saveMovement").disabled = true;
 
+confirmEAN();
+
         await scanner.stop();
         scanner.clear();
         scanner = null;
