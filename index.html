@@ -64,6 +64,21 @@
     padding: 18px;
     margin-top: 24px;
   }
+
+.scan-button {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  margin: 24px 0 16px;
+  background: #D4AF37;
+  color: #111111;
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+}
+
 </style>
 
 
@@ -81,9 +96,11 @@
 </script>
  
 
-<button onclick="startScanner()">
-  Skenovat EAN
+
+<button class="scan-button" onclick="startScanner()">
+  ◉ Skenovat EAN
 </button>
+
 <div id="reader" style="width:100%;max-width:400px;"></div>
 <p id="scanResult">Zatím nic nenaskenováno</p>
   
