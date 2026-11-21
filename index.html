@@ -256,9 +256,7 @@ async function startScanner() {
         result.textContent = "Naskenovaný EAN: " + decodedText;
         
 document.getElementById("productEAN").value = decodedText;
-document.getElementById("productName").textContent = "Čeká na načtení produktu";
-document.getElementById("productStock").textContent = "—";
-document.getElementById("saveMovement").disabled = true;
+
 
 confirmEAN();
 
