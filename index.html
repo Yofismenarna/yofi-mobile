@@ -172,33 +172,18 @@
 
 <script>
 
+
 function confirmEAN() {
-
   const ean = document.getElementById("productEAN").value.trim();
+  const result = document.getElementById("scanResult");
 
-  if (!ean) {
-    alert("Nejprve zadejte nebo naskenujte EAN.");
-    return;
-  }
-
-  document.getElementById("scanResult").textContent =
-    "Zadaný EAN: " + ean;
-
-  document.getElementById("saveMovement").disabled = true;
-
-  if (ean === "8590000000001") {
-    document.getElementById("productName").textContent =
-      "Testovací víno (UKÁZKA)";
-
-    document.getElementById("productStock").textContent =
-      "10 ks (testovací údaj)";
+  if (ean) {
+    result.textContent = "EAN připraven: " + ean;
   } else {
-    document.getElementById("productName").textContent =
-      "Produkt zatím nelze načíst";
-
-    document.getElementById("productStock").textContent = "—";
+    result.textContent = "Zatím nic nenaskenováno";
   }
 }
+
 
 function openStockWithEAN() {
   const ean = document.getElementById("productEAN").value.trim();
