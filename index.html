@@ -39,9 +39,12 @@
 <p>
   <label for="productEAN">EAN produktu:</label>
 
+
 <input type="text" id="productEAN"
        inputmode="numeric"
-       placeholder="Naskenujte nebo zadejte EAN">
+       placeholder="Naskenujte nebo zadejte EAN"
+       oninput="confirmEAN()">
+
 
 <button type="button" onclick="confirmEAN()">
   Potvrdit EAN
