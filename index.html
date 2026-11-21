@@ -95,6 +95,12 @@ async function startScanner() {
       { fps: 10, qrbox: { width: 250, height: 150 } },
       async (decodedText) => {
         result.textContent = "Naskenovaný EAN: " + decodedText;
+        
+document.getElementById("productEAN").value = decodedText;
+document.getElementById("productName").textContent = "Čeká na načtení produktu";
+document.getElementById("productStock").textContent = "—";
+document.getElementById("saveMovement").disabled = true;
+
         await scanner.stop();
         scanner.clear();
         scanner = null;
