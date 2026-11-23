@@ -198,7 +198,18 @@ button {
   letter-spacing: 5px;
   margin: 0;
 }
-
+.stats-button {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 16px;
+  background: transparent;
+  color: #d0b579;
+  border: 1px solid #8b754a;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+}
   
 </style>
 
@@ -245,6 +256,9 @@ button {
 <button type="button" class="continue-button" onclick="openStockWithEAN()">
   Pokračovat do skladu →
 </button>
+  <button type="button" class="stats-button" onclick="openStatistics()">
+  Statistiky a správa skladu
+</button>
 
 
 
@@ -277,6 +291,11 @@ function openStockWithEAN() {
 window.open(url + "?new=1&ean=" + encodeURIComponent(ean), "_blank");
 
 
+}
+
+function openStatistics() {
+  const url = "https://script.google.com/macros/s/AKfycbwcZlJNvov3Q9myldEbcY5gKATCZPIsnIeyDNxsHRJrmrahykWpXo_NsR-sthmYKXdWwg/exec";
+  window.open(url, "_blank");
 }
 
 </script>
